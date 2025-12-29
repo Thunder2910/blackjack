@@ -10,7 +10,7 @@ let playerEl = document.getElementById('player-el')
 
 let player = {
     name:'Thunder',
-    chips:143
+    chips:500
 }
 
 playerEl.textContent = player.name + ': $' + player.chips
@@ -33,7 +33,13 @@ function startGame() {
     sum = firstCard + secondCard
     hasBlackjack = false
     isAlive = true
-    renderGame()
+    playerEl.textContent = player.name + ': $' + player.chips
+    if (player.chips > 0) {
+        renderGame()
+        player.chips -= 50
+    } else {
+        messageEl.textContent = 'Get some money fucker!'
+    }
 }
 
 function renderGame() {
@@ -42,6 +48,8 @@ function renderGame() {
     } else if (sum===21) {
         message = 'You got blackjack'
         hasBlackjack = true
+        player.chips += 100
+        playerEl.textContent = player.name + ': $' + player.chips
     } else {
         message = 'Ma chudale bkl'
         isAlive = false
