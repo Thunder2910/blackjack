@@ -66,7 +66,7 @@ function newCard() {
     let newCard = getRandomCard()
     sum += newCard
     cards.push(newCard)
-    if (isAlive && hasBlackjack===false) {
+    if (isAlive && hasBlackjack===false && player.chips > 0) {
         renderGame()
     } else {
         messageEl.textContent = 'Start a new game motherfucker'
